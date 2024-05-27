@@ -9,9 +9,9 @@ const ProductSection: React.FC = () => {
   return (
     <Box sx={{ padding: "2rem", backgroundColor: "#f7f7f7" }}>
       <Typography
-        variant="h5"
+        variant="h4"
         component="div"
-        sx={{ mb: 4, mt: 2, textAlign: "center" }}
+        sx={{ mb: 4, mt: 2, textAlign: "center", fontWeight: 600 }}
       >
         Vi har något för alla
       </Typography>

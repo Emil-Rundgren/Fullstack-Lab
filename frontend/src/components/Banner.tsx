@@ -34,7 +34,7 @@ const Banner: React.FC = () => {
           zIndex: -1,
         }}
       />
-      <Typography variant="h4" component="div" sx={{ mb: 2 }}>
+      <Typography variant="h4" component="div" sx={{ mb: 2, fontWeight: 700 }}>
         Sommarens deals! Upp till 30% rabatt
       </Typography>
       <Button variant="contained" color="primary">
