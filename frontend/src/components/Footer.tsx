@@ -21,7 +21,7 @@ const Footer: React.FC = () => {
         backgroundColor: "white",
         color: "color",
         mt: "auto",
-        borderTop: "3px solid black",
+        borderTop: "3px solid lightblue",
         width: "100%",
         "& svg": {
           color: "black", // Set all icons to black
