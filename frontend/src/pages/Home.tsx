@@ -2,14 +2,14 @@
 import React from "react";
 import Banner from "../components/Banner";
 import ProductSection from "../components/ProductSection";
-import Slider from "../components/Slider";
+import PopularOffers from "../components/PopularOffers";
 
 const Home: React.FC = () => {
   return (
     <div>
       <Banner />
       <ProductSection />
-      <Slider />
+      <PopularOffers />
     </div>
   );
 };
