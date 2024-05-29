@@ -5,7 +5,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
-const ProductSection: React.FC = () => {
+const CategorySection: React.FC = () => {
   return (
     <Box sx={{ padding: "2rem", backgroundColor: "#f7f7f7" }}>
       <Typography
@@ -36,7 +36,7 @@ const ProductSection: React.FC = () => {
             <Typography variant="h6" component="div" sx={{ mt: 2 }}>
               Datorer till det lägsta priset
             </Typography>
-            <Button variant="contained" sx={{ mt: 2 }}>
+            <Button variant="contained" href="/productBudget" sx={{ mt: 2 }}>
               Läs mer
             </Button>
           </Box>
@@ -96,4 +96,4 @@ const ProductSection: React.FC = () => {
   );
 };
 
-export default ProductSection;
+export default CategorySection;
