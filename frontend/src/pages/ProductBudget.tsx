@@ -18,7 +18,7 @@ const Sidebar = styled(Box)({
 });
 
 const FilterSidebar: React.FC = () => {
-  // priceRange has 2 numbers because the slider downbellow uses 2 starting points, one for min-value the other for max-value.
+  // priceRange has 2 numbers because the slider downbellow uses 2 starting points, one for the min-value the other for max-value.
   const [priceRange, setPriceRange] = useState<number[]>([0, 5000]);
   const [osFilter, setOsFilter] = useState<{ Windows: boolean; Mac: boolean }>({
     Windows: false,
@@ -29,10 +29,14 @@ const FilterSidebar: React.FC = () => {
     "Brand B": false,
   });
 
+  // handlePriceChange handles new values from the Slider component.
+  // The type number | number[] is used because the Slider component is designed to handle both single value sliders and range sliders. This function updates the priceRange state with the new values from the slider.
   const handlePriceChange = (__event: Event, newValue: number | number[]) => {
     setPriceRange(newValue as number[]);
   };
 
+  //handleOsChange handles the change event for the OS filter checkboxes.
+  // It updates the osFilter state with the new value from the checkbox that was toggled.
   const handleOsChange = (event: ChangeEvent<HTMLInputElement>) => {
     setOsFilter({ ...osFilter, [event.target.name]: event.target.checked });
   };
@@ -52,7 +56,7 @@ const FilterSidebar: React.FC = () => {
       <Slider
         value={priceRange}
         onChange={handlePriceChange}
-        valueLabelDisplay="auto" // Shows the price label constantly when user uses the slider
+        valueLabelDisplay="auto" // Price label is shown when the user, uses the slider
         min={0}
         max={5000}
         step={10}
