@@ -12,10 +12,11 @@ import { styled } from "@mui/material/styles";
 const Sidebar = styled(Box)({
   position: "sticky",
   padding: "20px",
-  paddingRight: "30px",
   backgroundColor: "#f5f5f5",
-  width: "15%",
-  overflowX: "hidden",
+  overflowX: "hidden", // Avoid sideScroller
+  // zIndex: "-1000",
+  // width: "calc(100% - 40px)", // Adjust width based on the padding above that gives 20px to the left and right side of the sidebar. This avoids overflow on other components to the right side of the sidebar
+  height: "calc(100% - 40px)", // Same logic above, avoids overflow on the Navbar/Footer
 });
 
 const FilterSidebar: React.FC = () => {
@@ -61,6 +62,7 @@ const FilterSidebar: React.FC = () => {
         min={0}
         max={20000}
         step={10}
+        sx={{ width: "75%" }}
       />
       <Divider sx={{ my: 2 }} />
       <Typography variant="subtitle1">Operating System</Typography>
