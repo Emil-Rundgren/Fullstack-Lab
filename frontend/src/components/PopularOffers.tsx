@@ -16,9 +16,8 @@ const PopularOffers: React.FC = () => {
         Våra populäraste erbjudanden
       </Typography>
       <Grid container spacing={2}>
-        {/* Generate an array of 8 product cards */}
-        {Array.from(Array(8).keys()).map((_, index) => (
-          <Grid item xs={12} sm={6} md={3} key={index}>
+        {Array.from(Array(12).keys()).map((_, index) => (
+          <Grid item xs={12} sm={6} md={3} xl={2} key={index}>
             <ProductCard />
           </Grid>
         ))}

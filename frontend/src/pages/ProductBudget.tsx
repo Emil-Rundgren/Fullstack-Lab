@@ -11,7 +11,7 @@ import { styled } from "@mui/material/styles";
 // Define the main layout styles
 const MainContent = styled(Box)({
   padding: "20px",
-  backgroundColor: "#e7f7f7",
+  backgroundColor: "#f7f7f7",
   flexGrow: 1,
 });
 
@@ -38,7 +38,7 @@ const ProductBudget: React.FC = () => {
           </Typography>
           <ProductGrid container spacing={2}>
             {Array.from(Array(16).keys()).map((_, index) => (
-              <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+              <Grid item xs={12} sm={6} md={6} lg={4} xl={3} key={index}>
                 <ProductCard />
               </Grid>
             ))}
