@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -12,10 +12,10 @@ const StyledCard = styled(Card)({
 });
 
 const Media = styled(CardMedia)({
-  height: 140,
+  height: "240px",
 });
 
-const Price = styled(Typography)({
+const StrikeThrough = styled(Typography)({
   textDecoration: "line-through",
   fontSize: "24px",
 });
@@ -25,6 +25,11 @@ const DiscountedPrice = styled(Typography)({
   fontSize: "24px",
 });
 
+const Price = styled(Typography)({
+  fontSize: "24px",
+});
+
+// An interface that defines the structure of the Product object
 interface Product {
   id: number;
   title: string;
@@ -34,49 +39,38 @@ interface Product {
   price: string;
 }
 
-const ProductCardBudget: React.FC = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+// An interface that defines the structure of the productProps given from the ProductBudget page. The structure is based on the interface above
+interface ProductCardProps {
+  productProps: Product;
+}
 
-  useEffect(() => {
-    fetch("http://localhost:3000/api/products")
-      .then((response) => response.json())
-      .then((data) => setProducts(data.data))
-      .catch((error) => console.error("Error fetching products:", error));
-  }, []);
-
+// Prop (productProps) is given from the ProductBudget page. The information is then rendered out on the ProductCardBudget.
+const ProductCardBudget: React.FC<ProductCardProps> = ({ productProps }) => {
   return (
-    <div>
-      {products.map((product) => (
-        <StyledCard key={product.id}>
-          <Media image={product.imgSrc} title="Product Image" />
-          <CardContent>
-            <Typography gutterBottom variant="h6" component="div">
-              {product.title}
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              ⭐⭐⭐⭐⭐ {product.rating}
-            </Typography>
-            <Box display="flex" gap={"20px"}>
-              {product.strikeThrough ? (
-                <>
-                  <Price>{product.strikeThrough}</Price>
-                  <DiscountedPrice>{product.price}</DiscountedPrice>
-                </>
-              ) : (
-                <DiscountedPrice>{product.price}</DiscountedPrice>
-              )}
-            </Box>
-            <Button
-              variant="contained"
-              size="small"
-              sx={{ mt: 1, width: "100%" }}
-            >
-              Lägg i kundvagn
-            </Button>
-          </CardContent>
-        </StyledCard>
-      ))}
-    </div>
+    <StyledCard>
+      <Media image={productProps.imgSrc} title="Product Image" />
+      <CardContent>
+        <Typography gutterBottom variant="h6" component="div">
+          {productProps.title}
+        </Typography>
+        <Typography variant="body2" color="textSecondary" component="p">
+          ⭐⭐⭐⭐⭐ {productProps.rating}
+        </Typography>
+        <Box display="flex" gap={"20px"}>
+          {productProps.strikeThrough ? (
+            <>
+              <StrikeThrough>{productProps.strikeThrough}</StrikeThrough>
+              <DiscountedPrice>{productProps.price}</DiscountedPrice>
+            </>
+          ) : (
+            <Price>{productProps.price}</Price>
+          )}
+        </Box>
+        <Button variant="contained" size="small" sx={{ mt: 1, width: "100%" }}>
+          Lägg i kundvagn
+        </Button>
+      </CardContent>
+    </StyledCard>
   );
 };
 
