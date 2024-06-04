@@ -8,6 +8,7 @@ import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import Button from "@mui/material/Button";
+import Link from "@mui/material/Link";
 
 const Navbar: React.FC = () => {
   return (
@@ -62,7 +63,9 @@ const Navbar: React.FC = () => {
           <Box
             sx={{ flex: 3, display: "flex", justifyContent: "space-around" }}
           >
-            <Button color="inherit">Logga in</Button>
+            <Button color="inherit" href="/LogIn">
+              <Link>Logga in</Link>
+            </Button>
             <Button color="inherit">Kundvagn</Button>
             <Button color="inherit">Meny</Button>
           </Box>
