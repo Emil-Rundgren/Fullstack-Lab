@@ -22,18 +22,18 @@ const port = 3000;
 
 app.use(cors());
 
-// Get request to get info
+// Get request to get some info from all products
 app.get("/api/products", async (req, res) => {
   try {
     const products = await database.all(`
-      SELECT 
-        id,
-        title,
-        rating,
-        imgSrc,
-        strikeThrough,
-        price
-      FROM products
+    SELECT 
+    id,
+    title,
+    rating,
+    imgSrc,
+    strikeThrough,
+    price
+    FROM products
     `);
     res.status(200).json({ data: products });
   } catch (error) {
@@ -43,27 +43,13 @@ app.get("/api/products", async (req, res) => {
   }
 });
 
+// Get request to get all info from a choosen product
 app.get("/api/products/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const product = await database.get(
-      `
-      SELECT 
-        id,
-        title,
-        subTitle,
-        rating,
-        imgSrc,
-        listProcessor,
-        listMemory,
-        listStrength,
-        strikeThrough,
-        price
-      FROM products
-      WHERE id = ?
-    `,
-      [id]
-    );
+    const product = await database.get(`SELECT * FROM products WHERE id = ?`, [
+      id,
+    ]);
 
     if (product) {
       res.status(200).json(product);
