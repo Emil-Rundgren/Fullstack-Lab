@@ -34,7 +34,7 @@ const CategorySection: React.FC = () => {
               style={{ maxWidth: "100%" }}
             />
             <Typography variant="h6" component="div" sx={{ mt: 2 }}>
-              Datorer till det lägsta priset
+              Laptops till det lägsta priset
             </Typography>
             <Button variant="contained" href="/productBudget" sx={{ mt: 2 }}>
               Läs mer
@@ -54,7 +54,7 @@ const CategorySection: React.FC = () => {
             }}
           >
             <img
-              src="/images/productSectionImg1.jpg"
+              src="/images/productSectionImg2.jpg"
               alt="Category 2"
               style={{ maxWidth: "100%" }}
             />
@@ -79,12 +79,12 @@ const CategorySection: React.FC = () => {
             }}
           >
             <img
-              src="/images/productSectionImg1.jpg"
+              src="/images/productSectionImg3.jpg"
               alt="Category 3"
               style={{ maxWidth: "100%" }}
             />
             <Typography variant="h6" component="div" sx={{ mt: 2 }}>
-              Våra vassaste datorer
+              Våra vassaste Laptops
             </Typography>
             <Button variant="contained" sx={{ mt: 2 }}>
               Läs mer

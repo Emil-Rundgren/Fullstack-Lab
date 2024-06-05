@@ -1,7 +1,6 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 
 const Banner: React.FC = () => {
   return (
@@ -37,9 +36,6 @@ const Banner: React.FC = () => {
       <Typography variant="h4" component="div" sx={{ mb: 2, fontWeight: 700 }}>
         Sommarens deals! Upp till 30% rabatt
       </Typography>
-      <Button variant="contained" color="primary">
-        Läs mer
-      </Button>
     </Box>
   );
 };

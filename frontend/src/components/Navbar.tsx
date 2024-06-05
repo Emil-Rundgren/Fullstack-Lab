@@ -180,6 +180,7 @@ const Navbar: React.FC = () => {
                 border: "1px solid #ccc",
                 width: "100%",
                 marginTop: 1,
+                marginBottom: 1,
               }}
             >
               <InputBase

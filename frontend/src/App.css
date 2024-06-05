@@ -5,3 +5,8 @@ body,
   max-width: 100%;
   overflow-x: hidden;
 }
+
+ul {
+  padding-left: 20px;
+  font-size: 18px;
+}

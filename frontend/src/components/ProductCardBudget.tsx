@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -12,7 +13,8 @@ const StyledCard = styled(Card)({
 });
 
 const Media = styled(CardMedia)({
-  height: "240px",
+  height: "280px",
+  cursor: "pointer",
 });
 
 const StrikeThrough = styled(Typography)({
@@ -46,11 +48,28 @@ interface ProductCardProps {
 
 // Prop (productProps) is given from the ProductBudget page. The information is then rendered out on the ProductCardBudget.
 const ProductCardBudget: React.FC<ProductCardProps> = ({ productProps }) => {
+  // Create a navigate function using the useNavigate hook:
+  const navigate = useNavigate();
+
+  // When function is called the user will be navigated to the new route
+  const handleCardClick = () => {
+    navigate(`/productBudget/${productProps.id}`);
+  };
   return (
     <StyledCard>
-      <Media image={productProps.imgSrc} title="Product Image" />
+      <Media
+        image={productProps.imgSrc}
+        title="Product Image"
+        onClick={handleCardClick}
+      />
       <CardContent>
-        <Typography gutterBottom variant="h6" component="div">
+        <Typography
+          gutterBottom
+          variant="h6"
+          component="div"
+          onClick={handleCardClick}
+          sx={{ cursor: "pointer" }}
+        >
           {productProps.title}
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
