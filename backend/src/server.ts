@@ -76,15 +76,15 @@ app.post("/login", async (req, res) => {
       [email, password]
     );
     if (result) {
-      res.status(200).send("Login successful!");
+      res.status(200).json({ message: result });
     } else if (email === undefined || password === undefined) {
-      res.status(400).send("Email or password is missing!");
+      res.status(400).json({ error: "Email or password is missing!" });
     } else {
-      res.status(401).send("Invalid login info!");
+      res.status(401).json({ error: "Invalid login info!" });
     }
   } catch (error) {
     // Handle unexpected errors
-    res.status(500).send("An error occurred.");
+    res.status(500).json({ error: "An error occurred." });
   }
 });
 
@@ -96,21 +96,15 @@ interface AccountInfo {
   password: string;
 }
 
-let storeArray: AccountInfo[] = [];
-
 app.post("/create-account", async (req, res) => {
   try {
     const { email, password } = req.body as AccountInfo;
 
-    // Check if the email value exists in the array
-    const emailExists = storeArray.some(
-      (accountInfo) => accountInfo.email === email
+    // Check if the email value exists in the databae
+    const emailExists = database.get(
+      "SELECT email FROM accounts WHERE email = ?",
+      [email]
     );
-
-    await database.run("INSERT INTO cities (name, population) VALUES (?, ?)", [
-      email,
-      password,
-    ]);
 
     // Add new account if email is unique and both Values are present
     if (!emailExists && email && password) {
@@ -118,17 +112,16 @@ app.post("/create-account", async (req, res) => {
         "INSERT INTO accounts (email, password) VALUES (?, ?)",
         [email, password]
       );
-      res.status(201).send("Ett nytt konto har skapats"); // Send a confirmation message
-    } else if (!email || !password) {
-      // If the request lacks 'email' or 'password', send a 400
-      res.status(400).send("Email eller lösenord saknas, pröva igen");
+      res.status(201).json({ message: "Ett nytt konto har skapats" }); // Send a confirmation message
     } else if (emailExists && email && password) {
       // If the email does exist in the storeArray & the request includes an 'email' & 'password', send a 409
-      res.status(409).send("Ett konto med detta email finns redan pröva igen!");
+      res
+        .status(409)
+        .json({ error: "Ett konto med detta email finns redan pröva igen!" });
     }
   } catch (error) {
     // Handle unexpected errors
-    res.status(500).send("An error occurred.");
+    res.status(500).json({ error: "An error occurred." });
   }
 });
 
