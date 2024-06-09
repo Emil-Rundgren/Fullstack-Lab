@@ -59,7 +59,6 @@ const CreateAccount: React.FC = () => {
 
         const data = await response.json();
         console.log("Account created", data.message);
-        alert("hej");
         setAccountCreated(true); // Set account created status to true on successful account creation
       } catch (error) {
         if (error instanceof Error) {

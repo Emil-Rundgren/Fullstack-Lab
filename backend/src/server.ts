@@ -89,32 +89,25 @@ app.post("/login", async (req, res) => {
 });
 
 // POST handels the create account process
-
-// Set the structure of the req.body object, sent form the user.
-interface AccountInfo {
-  email: string;
-  password: string;
-}
-
 app.post("/create-account", async (req, res) => {
   try {
-    const { email, password } = req.body as AccountInfo;
+    const { email, password } = req.body;
 
-    // Check if the email value exists in the databae
-    const emailExists = database.get(
+    // Check if the email value exists in the Database
+    const emailExists = await database.get(
       "SELECT email FROM accounts WHERE email = ?",
       [email]
     );
 
-    // Add new account if email is unique and both Values are present
-    if (!emailExists && email && password) {
+    // Add new account if email is unique
+    if (!emailExists) {
       await database.run(
         "INSERT INTO accounts (email, password) VALUES (?, ?)",
         [email, password]
       );
-      res.status(201).json({ message: "Ett nytt konto har skapats" }); // Send a confirmation message
-    } else if (emailExists && email && password) {
-      // If the email does exist in the storeArray & the request includes an 'email' & 'password', send a 409
+      res.status(201).json({ message: "Ett nytt konto har skapats" });
+    } else if (emailExists) {
+      // If the email does exist in the Database
       res
         .status(409)
         .json({ error: "Ett konto med detta email finns redan pröva igen!" });
