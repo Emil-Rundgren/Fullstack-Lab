@@ -24,14 +24,14 @@ const StyledCard = styled(Card)({
 // Setting up a validation Schema with Yup
 const validationSchema = object({
   email: string()
-    .email("Ange en giltig e-postadress")
-    .required("E-post är obligatoriskt"),
-  password: string().required("Lösenord är obligatoriskt"),
+    .email("Ange en giltig e-postadress") // Error message for invalid email
+    .required("E-post är obligatoriskt"), // Error message for required email
+  password: string().required("Lösenord är obligatoriskt"), // Error message for required password
 });
 
 const CreateAccount: React.FC = () => {
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [accountCreated, setAccountCreated] = useState<boolean>(false); // State to track login status
+  const [errorMessage, setErrorMessage] = useState<string | null>(null); // State for error message
+  const [accountCreated, setAccountCreated] = useState<boolean>(false); // State to track account creation status
 
   const formik = useFormik({
     // Set initial form values for email and password fields
@@ -63,7 +63,7 @@ const CreateAccount: React.FC = () => {
       } catch (error) {
         if (error instanceof Error) {
           console.error("Error during account creation:", error);
-          setErrorMessage(error.message);
+          setErrorMessage(error.message); // Set error message if an error occurs
         }
       }
     },
@@ -83,7 +83,7 @@ const CreateAccount: React.FC = () => {
           component="form"
           noValidate
           autoComplete="off"
-          onSubmit={formik.handleSubmit} // Ensure formik.handleSubmit is called here
+          onSubmit={formik.handleSubmit} // Attach formik submit handler to form
         >
           <TextField
             margin="normal"
@@ -97,8 +97,8 @@ const CreateAccount: React.FC = () => {
             value={formik.values.email}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            error={formik.touched.email && Boolean(formik.errors.email)}
-            helperText={formik.touched.email && formik.errors.email}
+            error={formik.touched.email && Boolean(formik.errors.email)} // Show error state if email validation fails
+            helperText={formik.touched.email && formik.errors.email} // Show email error message
           />
           <TextField
             margin="normal"
@@ -112,12 +112,12 @@ const CreateAccount: React.FC = () => {
             value={formik.values.password}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            error={formik.touched.password && Boolean(formik.errors.password)}
-            helperText={formik.touched.password && formik.errors.password}
+            error={formik.touched.password && Boolean(formik.errors.password)} // Show error state if password validation fails
+            helperText={formik.touched.password && formik.errors.password} // Show password error message
           />
           {errorMessage && (
             <Typography color="error" variant="body2">
-              {errorMessage}
+              {errorMessage} // Display error message if it exists
             </Typography>
           )}
           <Button
@@ -129,7 +129,8 @@ const CreateAccount: React.FC = () => {
           >
             Skapa Konto
           </Button>
-          <Grid container justifyContent="center"></Grid>
+          <Grid container justifyContent="center"></Grid>{" "}
+          {/* Empty grid container for future use */}
         </Box>
       </CardContent>
     </StyledCard>

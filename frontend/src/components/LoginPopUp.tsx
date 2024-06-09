@@ -13,11 +13,13 @@ const StyledCard = styled(Card)({
   marginBottom: "20vh",
   textAlign: "center",
   position: "relative",
+  backgroundColor: "#1976d2",
+  color: "white",
 });
 
 const ProgressBar = styled("div")({
   height: "5px",
-  backgroundColor: "#3f51b5",
+  backgroundColor: "white",
   position: "absolute",
   bottom: 0,
   left: 0,

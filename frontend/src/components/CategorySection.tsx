@@ -8,6 +8,7 @@ import Button from "@mui/material/Button";
 const CategorySection: React.FC = () => {
   return (
     <Box sx={{ padding: "2rem", backgroundColor: "#f7f7f7" }}>
+      {/* Section: Category Title */}
       <Typography
         variant="h4"
         component="div"
@@ -15,7 +16,10 @@ const CategorySection: React.FC = () => {
       >
         Vi har något för alla
       </Typography>
+
+      {/* Section: Category Grid */}
       <Grid container spacing={4} justifyContent="center">
+        {/* Category 1 */}
         <Grid item xs={12} md={4}>
           <Box
             sx={{
@@ -41,6 +45,8 @@ const CategorySection: React.FC = () => {
             </Button>
           </Box>
         </Grid>
+
+        {/* Category 2 */}
         <Grid item xs={12} md={4}>
           <Box
             sx={{
@@ -61,11 +67,13 @@ const CategorySection: React.FC = () => {
             <Typography variant="h6" component="div" sx={{ mt: 2 }}>
               För dig som tycker att lagom räcker
             </Typography>
-            <Button variant="contained" sx={{ mt: 2 }}>
+            <Button variant="contained" href="/productMidRange" sx={{ mt: 2 }}>
               Läs mer
             </Button>
           </Box>
         </Grid>
+
+        {/* Category 3 */}
         <Grid item xs={12} md={4}>
           <Box
             sx={{
@@ -86,7 +94,7 @@ const CategorySection: React.FC = () => {
             <Typography variant="h6" component="div" sx={{ mt: 2 }}>
               Våra vassaste Laptops
             </Typography>
-            <Button variant="contained" sx={{ mt: 2 }}>
+            <Button variant="contained" href="/productHighEnd" sx={{ mt: 2 }}>
               Läs mer
             </Button>
           </Box>

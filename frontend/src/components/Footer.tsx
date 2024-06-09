@@ -21,22 +21,27 @@ const Footer: React.FC = () => {
         backgroundColor: "white",
         color: "color",
         mt: "auto",
-        borderTop: "3px solid lightblue",
+        borderTop: "3px solid #1976d2",
         width: "100%",
         "& svg": {
           color: "black", // Set all icons to black
         },
       }}
     >
+      {/* Section: Footer Title */}
       <Typography variant="h6" component="div" sx={{ mb: 2 }}>
         E-LAPTOP
       </Typography>
+
+      {/* Section: Contact Information */}
       <Typography variant="body2" component="div">
         Kontakta oss:{" "}
         <Link href="mailto:support@elaptop.com" color="inherit">
           support@elaptop.com
         </Link>
       </Typography>
+
+      {/* Section: Social Media Icons */}
       <Box sx={{ display: "flex", justifyContent: "center", mt: 1 }}>
         <IconButton
           href="https://www.facebook.com"
@@ -67,6 +72,8 @@ const Footer: React.FC = () => {
           <LinkedInIcon />
         </IconButton>
       </Box>
+
+      {/* Section: Navigation Links */}
       <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
         <Link href="/" color="inherit" sx={{ mx: 1 }}>
           Hem
@@ -81,6 +88,8 @@ const Footer: React.FC = () => {
           Användarvillkor
         </Link>
       </Box>
+
+      {/* Section: Footer Copyright */}
       <Typography variant="body2" component="div" sx={{ mt: 2 }}>
         &copy; {new Date().getFullYear()} E-LAPTOP
       </Typography>

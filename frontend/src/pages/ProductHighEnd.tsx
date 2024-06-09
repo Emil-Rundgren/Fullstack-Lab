@@ -30,7 +30,7 @@ interface Product {
   price: number;
 }
 
-const ProductBudget: React.FC = () => {
+const ProductHighEnd: React.FC = () => {
   // products is set as an array with elements that folows the Product object above.
   // The state is set to an empty [] initially
   const [products, setProducts] = useState<Product[]>([]);
@@ -53,8 +53,8 @@ const ProductBudget: React.FC = () => {
     setTimeout(() => setShowAlert(false), 3000); // Hide after 3 seconds
   };
 
-  // Filter and slice the products array to get only the first 4 products with a non-null strikeThrough value
-  const filteredProducts = products.filter((product) => product.price < 5000);
+  // Filter products from the database
+  const filteredProducts = products.filter((product) => product.price > 12000);
 
   return (
     <Grid container>
@@ -63,10 +63,10 @@ const ProductBudget: React.FC = () => {
           <Link color="inherit" href="/">
             Hem
           </Link>
-          <Typography color="textPrimary">Budget Laptops</Typography>
+          <Typography color="textPrimary">High-End Laptops</Typography>
         </Breadcrumbs>
         <Typography variant="h4" gutterBottom sx={{ fontWeight: 600, mt: 2 }}>
-          Budget Laptops
+          High-End Laptops
         </Typography>
         <ProductGrid container spacing={2}>
           {/* It iterates through every product/element in the product array. In every iteration it sends a prop (productProps & handleButtonClick) with the current product-/element-information and the function handleButtonClick to the ProductCardBudget component. */}
@@ -86,4 +86,4 @@ const ProductBudget: React.FC = () => {
   );
 };
 
-export default ProductBudget;
+export default ProductHighEnd;

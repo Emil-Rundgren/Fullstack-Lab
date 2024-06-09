@@ -14,6 +14,7 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 const Navbar: React.FC = () => {
+  // Responsive Design
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -25,13 +26,14 @@ const Navbar: React.FC = () => {
           position="static"
           color="default"
           sx={{
-            borderBottom: "3px solid lightblue",
+            borderBottom: "3px solid #1976d2",
             width: "100%",
-            marginTop: 1,
+            paddingTop: 1,
           }}
         >
           <Toolbar>
             <Grid container alignItems="center" spacing={2}>
+              {/* Logo */}
               <Grid item xs={2}>
                 <Link href="/" color="inherit" underline="none">
                   <Typography variant="h6" component="div">
@@ -39,7 +41,9 @@ const Navbar: React.FC = () => {
                   </Typography>
                 </Link>
               </Grid>
+              {/* Space */}
               <Grid item xs={1} />
+              {/* Search field */}
               <Grid item xs={6}>
                 <Box
                   component="form"
@@ -67,7 +71,9 @@ const Navbar: React.FC = () => {
                   </IconButton>
                 </Box>
               </Grid>
+              {/* Space */}
               <Grid item xs={1} />
+              {/* Login icon */}
               <Grid item xs={1}>
                 <Link
                   href="/LogIn"
@@ -85,6 +91,7 @@ const Navbar: React.FC = () => {
                   <Typography variant="body2">Logga in</Typography>
                 </Link>
               </Grid>
+              {/* ShopCart icon */}
               <Grid item xs={1}>
                 <Link
                   href="/Cart"
@@ -131,12 +138,14 @@ const Navbar: React.FC = () => {
                 alignItems: "center",
               }}
             >
+              {/* Logo */}
               <Link href="/" color="inherit" underline="none">
                 <Typography variant="h6" component="div">
                   E-LAPTOP
                 </Typography>
               </Link>
               <Box sx={{ display: "flex", alignItems: "center" }}>
+                {/* Log In icon */}
                 <Link
                   href="/LogIn"
                   color="inherit"
@@ -153,6 +162,7 @@ const Navbar: React.FC = () => {
                   </IconButton>
                   <Typography variant="body2">Logga in</Typography>
                 </Link>
+                {/* ShopCart icon */}
                 <Link
                   href="/Cart"
                   color="inherit"
@@ -170,6 +180,7 @@ const Navbar: React.FC = () => {
                 </Link>
               </Box>
             </Box>
+            {/* Search Field */}
             <Box
               component="form"
               sx={{

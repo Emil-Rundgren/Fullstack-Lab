@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import AddedProductAlert from "../components/AddedProductAlert";
 import { useParams } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -18,8 +19,8 @@ interface Product {
   listProcessor: string;
   listMemory: string;
   listStrength: string;
-  strikeThrough: string | null;
-  price: string;
+  strikeThrough: number | null;
+  price: number;
 }
 
 const ProductInfo: React.FC = () => {
@@ -29,6 +30,15 @@ const ProductInfo: React.FC = () => {
   // For responsive design
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
+  // Set the alertBox state to false so it stay hidden
+  const [showAlert, setShowAlert] = useState(false);
+
+  // When button is clicked show the alertbox (AddProductAlert.tsx)
+  const handleButtonClick = () => {
+    setShowAlert(true);
+    setTimeout(() => setShowAlert(false), 3000); // Hide after 3 seconds
+  };
 
   // Fetch the product data to use downbellow
   useEffect(() => {
@@ -53,14 +63,13 @@ const ProductInfo: React.FC = () => {
           }}
         >
           <Link color="inherit" href="/">
-            Home
+            Hem
           </Link>
           <Link color="inherit" href="/productBudget">
             Budget laptops
           </Link>
           <Typography color="textPrimary">{product?.subTitle}</Typography>
         </Breadcrumbs>
-
         {/* Product content */}
         {product && (
           <Box
@@ -76,7 +85,7 @@ const ProductInfo: React.FC = () => {
             boxShadow="0 4px 8px rgba(0, 0, 0, 0.1)"
           >
             <Typography
-              variant="h4"
+              variant="h5"
               gutterBottom
               sx={{ fontWeight: 600, mt: 2, width: "100%" }}
             >
@@ -125,6 +134,7 @@ const ProductInfo: React.FC = () => {
                 <Button
                   variant="contained"
                   size="medium"
+                  onClick={handleButtonClick}
                   sx={{ mt: 4, width: "100%" }}
                 >
                   Lägg i kundvagn
@@ -150,6 +160,8 @@ const ProductInfo: React.FC = () => {
             </Typography>
           </Box>
         )}
+        {/* Show alertbox when button is clicked on */}
+        {showAlert && <AddedProductAlert />}
       </Box>
     );
   }
